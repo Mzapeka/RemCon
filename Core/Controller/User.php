@@ -27,4 +27,12 @@ class User extends Controller {
     {
         $this->view->showUserInterface();
     }
+
+    function sendCommand(){
+        if (!$_POST['command']){
+            echo "error";
+        }
+
+        $this->model->sendCommandAction($_POST['command']);
+    }
 }

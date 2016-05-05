@@ -1,5 +1,5 @@
 
-    <h1>AirCon</h1>
+    <h1>Admin panel</h1>
 
 
     <a href="<?=MYSITE?>admin/devices" class="btn btn-primary btn-lg" role="button">Комнаты</a>

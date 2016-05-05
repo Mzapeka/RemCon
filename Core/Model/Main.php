@@ -13,17 +13,17 @@ class Main {
 
     public function authAction(){
         global $db;
-        $request = ["Login" => $_POST['login'], "Pass" => $_POST['pass']];
+        $request = ["login" => $_POST['login'], "pass" => $_POST['pass']];
         $user = $db->select("user", false, $request);
         //print_r($user);
         if ($user){
-            $_SESSION['auth'] = $user[0]['UserId'];
-            $_SESSION['status'] = $user[0]['Status'];
+            $_SESSION['auth'] = $user[0]['userId'];
+            $_SESSION['status'] = $user[0]['status'];
             if ($_POST['rememberMe'] == "on"){
-                setcookie("auth", $user[0]['UserId'], time()+1200, '/');
-                setcookie("status", $user[0]['Status'], time()+1200, '/');
+                setcookie("auth", $user[0]['userId'], time()+1200, '/');
+                setcookie("status", $user[0]['status'], time()+1200, '/');
             }
-            $result = $user[0]['Status'];
+            $result = $user[0]['status'];
         }
         else{
             $result = false;
