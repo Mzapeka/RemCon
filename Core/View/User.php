@@ -11,18 +11,18 @@ namespace View;
 
 use System\View;
 
-class Main extends View {
+class User extends View {
 
-    public function loadMainPage(){
+
+    public function showUserInterface(){
         $this->loadHeader();
-        $this->loadMenu();
+        include_once("View/user/userInterface.php");
         $this->loadfooter();
     }
 
-
-    public function showPassError(){
+    public function showAdminInterface(){
         $this->loadHeader();
-        include_once("View/main/passError.php");
+        include_once("View/user/userInterface.php");
         $this->loadfooter();
     }
 

@@ -12,7 +12,17 @@ namespace Controller;
 use System\Controller;
 
 
+
 class Admin extends Controller {
+    function __construct() {
+        parent::__construct();
+        if ($_SESSION['status'] != 'admin'){
+            header("Refresh:3;url=".MYSITE);
+            echo "Вы не являетесь администратором";
+            die;
+        }
+    }
+
     public function index()
     {
         $this->view->loadAdminPage();

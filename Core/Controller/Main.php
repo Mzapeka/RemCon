@@ -15,37 +15,30 @@ use System\Controller;
 class Main extends Controller {
     public function index()
     {
-        $this->view->loadMainPage();
+        if ($_SESSION['status'] == ADMIN || $_SESSION['status'] == USER){
+            header ("Location:".MYSITE."user/");
+        }
+        else {
+            $this->view->loadMainPage();
+        }
+
     }
 
     public function auth(){
         switch ($this->model->authAction()){
-            case user:
-                $this->view->showUserInterface();
+            case 'user':
+                header ("Location:".MYSITE."user/");
+                //$this->view->showUserInterface();
                 break;
-            case admin:
-                $this->view->showAdminInterface();
+            case 'admin':
+                header ("Location:".MYSITE."user/");
+                //$this->view->showAdminInterface();
                 break;
             default:
+                header("Refresh:3;url=".MYSITE);
                 $this->view->showPassError();
                 break;
         }
     }
-
-    public function loadList(){
-        if ($_POST['clear'] == 'on'){
-            $this->model->clearFolderAction();
-        }
-        if ($_POST['api'] == 'on'){
-            $images = $this->model->getImageListByApi();
-        }
-        else {
-            $images = $this->model->getImgList();
-        }
-        $this->view->mainView($images);
-        //$this->view->loadImgList();
-    }
-
-
 
 } 

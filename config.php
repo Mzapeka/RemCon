@@ -9,6 +9,10 @@ define('MYSITE', 'http://remcon/');
 //define("MYMAIL", "mzapeka@gmail.com");
 //define("ADMINMAIL", "promo@kts540.in.ua");
 
+//User roles
+define("USER", "user");
+define("ADMIN", "admin");
+
 //База данных
 
 //define ("DBHOST", "");
