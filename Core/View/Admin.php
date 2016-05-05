@@ -43,7 +43,7 @@ class Admin extends View {
         $this->loadfooter();
     }
 
-    public function irRemoutView(){
+    public function irRemoutView($info){
         $this->loadHeader();
         include_once("View/admin/irRemoutView.php");
         $this->loadfooter();

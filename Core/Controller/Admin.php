@@ -52,11 +52,13 @@ class Admin extends Controller {
 
 
     public function irRemout(){
-        $this->view->irRemoutView();
+        $info = $this->model->getIrRemout();
+        $this->view->irRemoutView($info);
         //ToDo: make method irRemout()
     }
 
     public function newIrRemout(){
+        $this->view->newIrRemoutView();
         //ToDo: make method newIrRemout()
     }
 

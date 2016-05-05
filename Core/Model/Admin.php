@@ -16,6 +16,12 @@ class Admin {
         return $allDevices;
         //ToDo: make method getDevices()
     }
+    public function getIrRemout(){
+        global $db;
+        $allRemout = $db->select('irRemout');
+        return $allRemout;
+        //ToDo: make method getDevices()
+    }
 
 }
 

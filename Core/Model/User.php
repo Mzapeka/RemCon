@@ -23,8 +23,8 @@ class User {
 
     private function sendMqttMessage($topic, $message){
         require_once ('Core/System/phpMQTT/phpMQTT.php');
-        $mqtt = new phpMQTT("192.168.1.108", 1883, "Remout Condition Service"); //Change client name to something unique
-        if ($mqtt->connect(true, NULL, 'test', 'test')) {
+        $mqtt = new phpMQTT(MQTT_SERVER, MQTT_PORT, MQTT_IDCLIENT); //Change client name to something unique
+        if ($mqtt->connect(true, NULL, MQTT_LOGIN, MQTT_PASS)) {
             //$mqtt->publish("bluerhinos/phpMQTT/examples/publishtest","Hello World! at ".date("r"),0);
             $mqtt->publish($topic,$message,0);
             $mqtt->close();
