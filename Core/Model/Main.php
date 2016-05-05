@@ -13,22 +13,16 @@ class Main {
 
     public function authAction(){
         global $db;
-        $request = ["mail" => $_POST['login'], "pass" => $_POST['password']];
-        $user = $db->select("users", false, $request);
+        $request = ["Login" => $_POST['login'], "Pass" => $_POST['pass']];
+        $user = $db->select("user", false, $request);
         if ($user){
-            $result = $user[0]['idUser'];
-        }
-        else{
-            $result = false;
-        }
-        Return($result);
-    }
-    function getUserId(){
-        global $db;
-        $request = ["mail" => $_POST['login'], "pass" => $_POST['password']];
-        $user = $db->select("users", false, $request);
-        if ($user){
-            $result = $user[0]['idUser'];
+            $_SESSION['auth'] = $user[0];
+            $_SESSION['status'] = $user[3];
+            if ($_POST['rememberMe'] == "on"){
+                setcookie("auth", $user[0], time()+1200, '/');
+                setcookie("status", $user[3], time()+1200, '/');
+            }
+            $result = $user[3];
         }
         else{
             $result = false;
@@ -36,14 +30,6 @@ class Main {
         Return($result);
     }
 
-    function userAuth($userId){
-        $_SESSION['auth'] = $userId;
-        $_SESSION['status'] = 'user';
-        if ($_POST['rememberMe'] == "on"){
-            setcookie("auth", $userId, time()+1200, '/');
-            setcookie("status", 'user', time()+1200, '/');
-        }
-    }
 
     function exitAuth(){
         session_destroy();

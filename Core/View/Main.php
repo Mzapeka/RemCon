@@ -19,9 +19,21 @@ class Main extends View {
         $this->loadfooter();
     }
 
-    public function mainView($images){
+    public function showUserInterface(){
         $this->loadHeader();
-        include_once("View/productList.php");
+        include_once("View/main/userInterface.php");
+        $this->loadfooter();
+    }
+
+    public function showAdminInterface(){
+        $this->loadHeader();
+        include_once("View/main/userInterface.php");
+        $this->loadfooter();
+    }
+
+    public function showPassError(){
+        $this->loadHeader();
+        include_once("View/main/passError.php");
         $this->loadfooter();
     }
 

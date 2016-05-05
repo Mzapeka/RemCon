@@ -19,7 +19,7 @@
             <div class="col-sm-offset-2 col-sm-10">
                 <div class="checkbox">
                     <label>
-                        <input type="checkbox"> Запомнить меня
+                        <input type="checkbox" name="rememberMe"> Запомнить меня
                     </label>
                 </div>
             </div>

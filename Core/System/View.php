@@ -14,7 +14,7 @@ abstract class View {
         include_once "view/header.php";
     }
     public function loadMenu(){
-        include_once "view/main.php";
+        include_once "view/main/main.php";
     }
     public function loadfooter(){
         include_once "view/footer.php";

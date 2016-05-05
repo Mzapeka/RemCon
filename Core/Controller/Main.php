@@ -21,13 +21,13 @@ class Main extends Controller {
     public function auth(){
         switch ($this->model->authAction()){
             case user:
-                //do something
+                $this->view->showUserInterface();
                 break;
             case admin:
-                //do somth
+                $this->view->showAdminInterface();
                 break;
             default:
-                //do somth
+                $this->view->showPassError();
                 break;
         }
     }
