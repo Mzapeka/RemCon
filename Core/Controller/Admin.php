@@ -54,12 +54,20 @@ class Admin extends Controller {
     public function irRemout(){
         $info = $this->model->getIrRemout();
         $this->view->irRemoutView($info);
-        //ToDo: make method irRemout()
     }
 
     public function newIrRemout(){
         $this->view->newIrRemoutView();
-        //ToDo: make method newIrRemout()
+    }
+    public function newCommand(){
+        $result = $this->model->addNewCommand();
+        header("Refresh:3;url=".MYSITE."admin/newirremout");
+        if ($result){
+            echo "Команда добавлена успешно";
+        }
+        else {
+            echo "Ошибка записи";
+        }
     }
 
     public function addIrRemout(){
