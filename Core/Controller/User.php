@@ -25,7 +25,8 @@ class User extends Controller {
 
     function index()
     {
-        $this->view->showUserInterface();
+        $data = $this->model->getSensorData();
+        $this->view->showUserInterface($data);
     }
 
     function sendCommand(){

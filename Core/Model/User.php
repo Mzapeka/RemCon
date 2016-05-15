@@ -50,5 +50,25 @@ class User {
 
     }
 
+    public function getSensorData(){
+        global $db;
+        $sensors = $db->select('devices', 'idDevice', ['userId' => $_SESSION['auth'], 'role' => 'Sensor']);
+
+        foreach ($sensors as $id){
+            $sql = "SELECT DISTINCT `param_Name` FROM `dataBank` WHERE `deviceId` = :devId";
+            $mask = [":devId" => $id['idDevice']];
+            $paramName = $db->sendQuery($sql, $mask);
+            foreach ($paramName as $param){
+                $sql = "SELECT * FROM `dataBank` WHERE `deviceId` = :devId AND `param_Name` = :parName ORDER BY `id` DESC LIMIT 1;";
+                $mask = [":devId" => $id['idDevice'],
+                        ":parName"=> $param['param_Name']];
+                $idd = $db->sendQuery($sql, $mask);
+                $data[$id['idDevice']][$param['param_Name']] = $idd[0]['value'];
+            }
+        }
+        return $data;
+        //var_dump($data);
+    }
+
 }
 

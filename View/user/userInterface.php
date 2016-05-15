@@ -3,7 +3,7 @@
     <div class="col-md-10 col-sm-12">
         <div class="modal-content">
             <div class="modal-header">
-                <h1>Remout control</h1>
+                <h3>Remout control</h3>
             </div>
             <div class="modal-body">
                 <button type="button" class="btn btn-primary btn-lg irCommand" data-command="1">On</button>
